@@ -1,0 +1,24 @@
+module.exports = function(grunt) {
+
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    jshint: {
+    files: ['gruntfile.js', 'index.js', 'requestHandler.js', 'router.js', 'server.js', 'requestHandlers.js', ],
+    options: {
+    globals: {
+    jQuery: true,
+    console: true,
+    module: true
+    }
+  }
+},
+  watch: {
+  files: ['<%= jshint.files %>'],
+  tasks: ['jshint']
+  }
+});
+
+grunt.loadNpmTasks('grunt-contrib-jshint');
+grunt.registerTask('test', ['jshint']);
+grunt.registerTask('default', ['jshint']);
+};
